@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios Jurídicos</title>
+  <style>
+    /* Estilos CSS para personalizar la página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative; /* Agregado */
+    }
+
+    #logo {
+      position: absolute;
+      top: 2px;
+      left: 10px; /* Modificado */
+      width: 80px;
+      height: auto;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+    nav {
+      background-color: #f4f4f4;
+      padding: 10px;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px;
+    }
+    
+    section {
+      padding: 20px;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    #slideshow-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    #slideshow {
+      position: relative;
+      width: 1000px;
+      height: 600px;
+      overflow: hidden;
+    }
+    
+    #slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="logo" src="img/logo.png" alt="Logotipo">
+    <h1>Servicios Jurídicos</h1>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div id="slideshow-container">
+    <div id="slideshow">
+      <img src="img/imagen1.jpg" alt="Imagen 1">
+      <img src="img/imagen2.jpg" alt="Imagen 2">
+      <img src="img/imagen3.jpg" alt="Imagen 3">
+    </div>
+  </div>
+
+  <script>
+    var images = document.querySelectorAll('#slideshow img');
+    var currentImageIndex = 0;
+
+    // Muestra la primera imagen al cargar la página
+    images[currentImageIndex].style.opacity = '1';
+  </script>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 Servicios Jurídicos. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

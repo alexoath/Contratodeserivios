@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato</title>
+  <style>
+    /* Estilos CSS para personalizar la página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    section {
+      padding: 20px;
+      width: 8.5in; /* Tamaño carta */
+      margin: 0 auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .signature-container {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    /* Ajustar el tamaño de la imagen de la firma */
+    img.firma {
+      width: 100px; /* Cambia este valor según tu preferencia */
+    }
+  </style>
+  <script>
+    function generarContrato() {
+      // Obtener los valores ingresados por el usuario
+      var nombreCompleto = document.getElementById("nombreCompleto").value;
+      var tipoServicio = document.getElementById("tipoServicio").value;
+      var plazoDuracion = document.getElementById("plazoDuracion").value;
+      var formaPago = document.getElementById("formaPago").value;
+
+      // Generar el contenido del contrato utilizando los valores ingresados y la imagen de la firma
+      var contenidoContrato = 'CONTRATO DE PRESTACIÓN DE SERVICIOS\n\n' +
+        'Entre "ServiciosJuridicos", con domicilio en Amatitlan, Guatemala, en adelante denominado el "Proveedor", y "' + nombreCompleto + '", con domicilio en Amatitlan, Guatemala, en adelante denominado el "Cliente", se acuerda el presente contrato de prestación de servicios, sujeto a las siguientes cláusulas:\n\n' +
+        '1. Objeto del Contrato\n' +
+        '   1.1 El Proveedor se compromete a prestar los siguientes servicios: asesoría en "' + tipoServicio + '".\n' +
+        '   1.2 El Cliente acepta y contrata los servicios mencionados en la cláusula 1.1. \n\n' +
+        '2. Duración del Contrato\n' +
+        '   2.1 El presente contrato tendrá una duración de "' + plazoDuracion + '".\n' +
+        '   2.2 Ambas partes acuerdan que el contrato puede ser renovado por mutuo acuerdo por períodos adicionales, previa notificación por escrito con 30 días de anticipación antes de la fecha de vencimiento del contrato. \n\n' +
+        '3. Forma de Pago\n' +
+        '   3.1 El Cliente se compromete a realizar el pago en "' + formaPago + '".\n\n' +
+        '4. Confidencialidad y Protección de Datos\n' +
+        '   4.1 Ambas partes acuerdan mantener la confidencialidad de la información confidencial intercambiada durante la prestación de servicios.\n' +
+        '   4.2 El Proveedor se compromete a utilizar y procesar los datos personales del Cliente de acuerdo con las leyes y regulaciones aplicables.\n\n' +
+        '5. Resolución de Conflictos y Ley Aplicable\n' +
+        '   5.1 Cualquier disputa o conflicto surgido en relación con este contrato se resolverá mediante negociación de buena fe entre las partes.\n' +
+        '   5.2 Si las partes no pueden resolver el conflicto por negociación, se someterá a la jurisdicción exclusiva de los tribunales competentes de la Ciudad de Guatemala.\n\n' +
+        '6. Disposiciones Generales\n' +
+        '   6.1 Cualquier modificación o enmienda a este contrato debe ser realizada por escrito y firmada por ambas partes.\n' +
+        '   6.2 Este contrato constituye el acuerdo completo entre las partes y reemplaza cualquier acuerdo o entendimiento previo, ya sea escrito o verbal, en relación con el objeto del contrato.\n' +
+        '   6.3 Cualquier notificación o comunicación requerida o permitida en virtud de este contrato se realizará por escrito y se considerará debidamente entregada si se envía por correo certificado, correo electrónico o servicio de entrega con acuse de recibo.\n\n' +
+        'Firmado el presente contrato de prestación de servicios.\n\n' 
+        
+
+      window.location.href = "final.html?contrato=" + encodeURIComponent(contenidoContrato);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Solicitar Contrato</h1>
+  </header>
+
+  <section>
+    <h2>Ingrese la información para generar el contrato</h2>
+
+    <table>
+      <tr>
+        <td><label for="nombreCompleto">Nombre Completo:</label></td>
+        <td><input type="text" id="nombreCompleto"></td>
+      </tr>
+      <tr>
+        <td><label for="tipoServicio">Tipo de Servicio:</label></td>
+        <td>
+          <select id="tipoServicio">
+            <option value="Derecho Civil">Derecho Civil</option>
+            <option value="Derecho Penal">Derecho Penal</option>
+            <option value="Derecho Laboral">Derecho Laboral</option>
+            <option value="Derecho Mercantil">Derecho Mercantil</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="plazoDuracion">Plazo de Duración:</label></td>
+        <td><input type="text" id="plazoDuracion"></td>
+      </tr>
+      <tr>
+        <td><label for="formaPago">Forma de Pago:</label></td>
+        <td>
+          <select id="formaPago">
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+            <option value="PayPal">PayPal</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <button onclick="generarContrato()">Solicitar Contrato</button>
+    
+  </section>
+</body>
+</html>

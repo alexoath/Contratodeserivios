@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato Final</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+    section {
+      padding: 20px;
+      width: 8.5in; /* Tamaño carta */
+      margin: 0 auto;
+    }
+    
+    pre {
+      font-family: Arial, sans-serif;
+      font-size: 11pt;
+      text-align: justify;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .button-container button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .button-container button:last-child {
+      margin-right: 0;
+    }
+
+    #firmaCanvasContainer {
+      border: 1px solid #333;
+      margin-top: 10px;
+      display: block;
+      text-align: center;
+    }
+
+    #firmaCanvas {
+      display: inline-block;
+    }
+
+    #informacionAdicional {
+      margin-top: 20px;
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #informacionAdicional img {
+      margin-right: 10px;
+    }
+
+    #informacionAdicionalContent {
+      margin-top: 10px;
+      font-size: 12pt;
+      flex-basis: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Contrato Generado</h1>
+  </header>
+
+  <section>
+    <h2>Contenido del Contrato:</h2>
+    <pre id="contratoContent"></pre>
+
+    <div id="informacionAdicional">
+      <h3>
+        <img src="img/firma1.jpg" alt="Imagen 1">
+        <img id="firmaGuardada" src="" alt="Firma Guardada" class="hidden">
+        <p>_____________________ &emsp;&emsp;______________________</p>
+        <p>&emsp;&emsp;&emsp;Proveedor&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Cliente</p>
+      </h3>
+      <div id="informacionAdicionalContent"></div>
+    </div>
+
+    <div class="button-container">
+      <div id="firmaCanvasContainer">
+        <canvas id="firmaCanvas"></canvas>
+      </div>
+      <div class="button-container">
+        <button onclick="guardarFirma()">Guardar Firma</button>
+        <button onclick="borrarFirma()">Borrar Firma</button>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button onclick="window.print()">Descargar Contrato</button>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script> <!-- html2pdf.js library -->
+  <script>
+    var firmaCanvas = document.getElementById('firmaCanvas');
+    var firmaContext = firmaCanvas.getContext('2d');
+    var isDrawing = false;
+
+    // Obtener el ancho y alto de la imagen "firma1.jpg"
+    var firmaImage = document.createElement('img');
+    firmaImage.src = 'img/firma1.jpg';
+    firmaImage.addEventListener('load', function() {
+      firmaCanvas.width = firmaImage.width;
+      firmaCanvas.height = firmaImage.height;
+    });
+
+    firmaCanvas.addEventListener('mousedown', startDrawing);
+    firmaCanvas.addEventListener('mousemove', draw);
+    firmaCanvas.addEventListener('mouseup', stopDrawing);
+    firmaCanvas.addEventListener('mouseout', stopDrawing);
+
+    function startDrawing(event) {
+      isDrawing = true;
+      var rect = firmaCanvas.getBoundingClientRect();
+      var x = event.clientX - rect.left;
+      var y = event.clientY - rect.top;
+      firmaContext.beginPath();
+      firmaContext.moveTo(x, y);
+    }
+
+    function draw(event) {
+      if (!isDrawing) return;
+      var rect = firmaCanvas.getBoundingClientRect();
+      var x = event.clientX - rect.left;
+      var y = event.clientY - rect.top;
+      firmaContext.lineTo(x, y);
+      firmaContext.stroke();
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    function guardarFirma() {
+      var firmaDataURL = firmaCanvas.toDataURL(); // Obtener la firma en formato base64
+
+      var firmaGuardada = document.getElementById('firmaGuardada');
+      firmaGuardada.src = firmaDataURL;
+      firmaGuardada.classList.remove('hidden');
+    }
+
+    function borrarFirma() {
+      firmaContext.clearRect(0, 0, firmaCanvas.width, firmaCanvas.height);
+      var firmaGuardada = document.getElementById('firmaGuardada');
+      firmaGuardada.src = '';
+      firmaGuardada.classList.add('hidden');
+    }
+
+    // Definir el contenido del contrato directamente en el código
+    var urlParams = new URLSearchParams(window.location.search);
+    var contratoContent = urlParams.get('contrato');
+    var informacionAdicionalContent = urlParams.get('informacion');
+
+    // Mostrar el contenido del contrato en la página
+    var contratoElement = document.getElementById('contratoContent');
+    contratoElement.innerHTML = contratoContent;
+
+    // Mostrar la información adicional en la página
+    var informacionAdicionalElement = document.getElementById('informacionAdicionalContent');
+    informacionAdicionalElement.innerHTML = informacionAdicionalContent;
+  </script>
+</body>
+</html>

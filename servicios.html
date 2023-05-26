@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios Jurídicos</title>
+  <style>
+    /* Estilos CSS para personalizar la página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative; /* Agregado */
+    }
+
+    #logo {
+      position: absolute;
+      top: 2px;
+      left: 10px;
+      width: 80px; /* Modificado */
+      height: auto;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+    nav {
+      background-color: #f4f4f4;
+      padding: 10px;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav ul li {
+      display: inline;
+      margin-right: 10px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px;
+    }
+    
+    section {
+      padding: 20px;
+    }
+    
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .service-options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .service-option {
+      width: 250px;
+      padding: 20px;
+      background-color: #f4f4f4;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .service-option h3 {
+      margin-top: 0;
+    }
+  </style>
+  <script>
+    function redirectToPage(servicio) {
+      switch(servicio) {
+        case 'Derecho Civil':
+          window.location.href = 'contrato.html';
+          break;
+        case 'Derecho Penal':
+          window.location.href = 'contrato.html';
+          break;
+        case 'Derecho Laboral':
+          window.location.href = 'contrato.html';
+          break;
+        case 'Derecho Mercantil': /* Agregado */
+          window.location.href = 'contrato.html';
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img id="logo" src="img/logo.png" alt="Logotipo">
+    <h1>Servicios Jurídicos</h1>    
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+  
+  <section>
+    <h2>Nuestros Servicios Jurídicos</h2>
+    
+    <div class="service-options">
+      <div class="service-option" onclick="redirectToPage('Derecho Civil')">
+        <h3>Derecho Civil</h3>
+        <p>Asesoramiento y representación legal en casos de contratos, responsabilidad civil, propiedad, sucesiones, etc.</p>
+      </div>
+      
+      <div class="service-option" onclick="redirectToPage('Derecho Penal')">
+        <h3>Derecho Penal</h3>
+        <p>Defensa legal en casos penales, asistencia a clientes durante investigaciones, juicios penales y recursos.</p>
+      </div>
+      
+      <div class="service-option" onclick="redirectToPage('Derecho Laboral')">
+        <h3>Derecho Laboral</h3>
+        <p>Asesoramiento a empleados y empleadores en asuntos laborales, contratos, despidos, reclamaciones, etc.</p>
+      </div>
+
+      <div class="service-option" onclick="redirectToPage('Derecho Mercantil')">
+        <h3>Derecho Mercantil</h3>
+        <p>Asesoramiento y representación legal en asuntos relacionados con el derecho mercantil, contratos comerciales, sociedades, etc.</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <p>Derechos de autor &copy; 2023 Servicios Jurídicos. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
